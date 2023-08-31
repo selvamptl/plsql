@@ -1,0 +1,53 @@
+Interview questions for SQL/PLSQL Developers
+
+1) what is index by table, nested table, varray diff between them?
+2) what is Refcursor? it's types?
+3) what is mutating error? how to avoid mutating error using compound trigger?
+4) what are the cursor attributes?
+5) what is implicit cursor and explicit cursor?
+6) diff between procedure and function?
+7) can we use DDL, DCL in PLSQL Block?
+8) what are the exceptions in PLSQL? how to handle exception in PLSQL?
+9) what is trigger? Explain the types of the triggers?
+10) what is pragma exception_init?
+11) when to use cursor and when to use collection?
+12) what are advantages of the packages in oracle?
+13) what is Bulk Exception in PLSQL? what is save exceptions?
+14) diff between procedure and packages?
+15) diff between constraints and triggers?
+16) diff between row level trigger and statement level trigger?
+17) what are the query optimization technique in oracle?
+18) What are the types of SQL joins and when would you use each one?
+19) what are the global temporary tables?
+20) what are the constraints? what are it's types?
+21) How to delete duplicate records?
+22) What is index and how it can improve query performance?
+23) Refresh types in materialized view?
+24) Diff between a clustered and a non-clustered index in SQL?
+25) Diff between delete and truncate?
+26) What is views? Types of views?
+27) What is dual table?
+28) What is Explain plan?
+29) What are oracle hints?
+30) What are window functions? Explain with examples?
+31) Diff between decode and case?
+32) Diff between view and materialized view?
+33) What are the analytical functions?
+34) What are the different types of subqueries in SQL and how are they used?
+35) what are the union, unionall, intersect, minus operators?
+36) how to find list of the indexes for a given table?
+37) what are the benefits and drawbacks of indexes?
+38) what is function based index?
+39) what are partitions? explain diff types?
+40) what is substr() , instr() functions?
+41) diff between nvl, nvl2 and coalsce function?
+42) diff between replace and translate?
+43) what is with check option clause in view? what is force view?
+44) Explain on delete cascade?
+45) what is pivot function?
+46) what is explain plan?
+47) how to update complex view?
+48) how to get unique records without using distinct clause?
+
+
+

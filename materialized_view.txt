@@ -1,0 +1,86 @@
+Materialized view in SQL and it's refresh types
+
+Materialized view is database object that stores query output and precomputed result..
+
+
+📍 Purpose to create Materialized view
+
+1) to maintain local copy for remote database object.
+
+2) to improve performance of complex group by, complex aggregate operations.
+
+In data warehouse most of the query uses complex group by, complex aggregate operations so materialized view is used.
+
+
+📍 Before creating Materialized view dba must give permission to user
+
+grant create any materialized view to username;
+
+
+📍 Syntax for Materialized view
+
+create materialized view viewname as select statement;
+
+
+When base table changes then those changes will not reflect in materialized view so to reflect those changes in materialized view then we must refresh materialized view.
+
+
+📍 Oracle having two types for refreshing materialized view
+
+
+1) Complete refresh materialized view
+
+By default materialized views are complete refresh materialized view.
+
+This type does not give more performance because when we are refreshing materialized view number of times ROWID created even if we are not modifying data in base table also.
+
+To overcome this problem to improve performance of the query another type introduced i.e. fast refresh materialized view.
+
+syntax
+create materialized view materialized-view-name refresh complete as select statement;
+
+Example
+
+create materialized view mv 
+refresh complete 
+as
+select * from emp where deptno=10;
+
+select rowid, ename,sal from mv;
+
+exec dbms_mview.refresh('mv');
+
+select rowid, ename,sal from mv;
+
+--(here rowid are changed)
+
+
+2) Fast refresh materialized view
+
+This type of materialized view is also called as incremental refresh materialized view.
+
+This materialized view performance is high than the complete refresh materialized view because ROWID are never changed when we are refreshing materialized view number of times also.
+
+syntax
+create materialized view materialized-view-name refresh fast as select statement;
+
+create materialized view mv1
+refresh fast
+as
+select * from emp where deptno=10;
+
+select rowid, ename,sal from mv1;
+
+exec dbms_mview.refresh('mv1');
+
+select rowid, ename,sal from mv1;
+
+--(here rowid are not changed)
+
+
+📍 materialized view log
+
+Before we are using fast refresh materialized view it needs mechanism to capture any changes made to it's base table. This refreshment is called as materialized view log. That's why before creating fast refresh materialized view we must create materialized view log on base table.
+
+Syntax
+create materialized view on base tablename;
