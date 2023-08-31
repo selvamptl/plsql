@@ -1,0 +1,271 @@
+Program 1: print 
+O
+Or
+Ora
+Orac
+Oracl
+Oracle
+
+Answer:
+declare
+n number;
+v varchar2(10):='Oracle';
+i number;
+j number;
+
+begin
+n:=length(v);
+for i in 1..n loop  
+  for j in 1..i  loop
+    dbms_output.put(substr(v , j , 1 ));
+    end loop;
+     DBMS_OUTPUT.NEW_LINE;
+end loop;
+end;
+/
+
+SELECT SUBSTR('Oracle',1,LEVEL) LETTER 
+FROM DUAL
+CONNECT BY LEVEL <= LENGTH('Oracle');
+---------------------------------------------------------------------
+Program 2: print 
+*
+**
+***
+****
+*****
+Answer:
+declare
+n number:=5;
+v varchar2(1):='*';
+i number;
+j number;
+
+begin
+for i in 1..n loop  
+  for j in 1..i  loop
+    dbms_output.put(v);
+    end loop;
+     DBMS_OUTPUT.NEW_LINE;
+end loop;
+end;
+/
+or
+
+select rpad('*',level, '*') 
+from dual
+connect by level <= 5;
+---------------------------------------------------------------------
+Program 3: print 
+*****
+****
+***
+**
+*
+Answer:
+declare
+n number:=5;
+v varchar2(1):='*';
+i number;
+j number;
+
+begin
+for i in 1..n loop  
+  for j in 1..n-i+1  loop
+    dbms_output.put(v);
+    end loop;
+     DBMS_OUTPUT.NEW_LINE; -- for new line
+end loop;
+
+end;
+
+---------------------------------------------------------------------
+Program 4:  
+Print Hello like 
+H
+e
+l
+l
+o
+
+select substr('hello', level, 1) Letter  from dual  connect by level <= length('hello');
+
+---------------------------------------------------------------------
+Print Hello like H,e,l,l,o
+
+Declare
+c1 Number:=1;
+c2 Varchar2(5);
+c3 varchar2(10);
+begin
+for c1 in 1..5
+loop
+select substr('Hello' , c1 , 1 ) into c2 from dual;
+if c3 is not null then
+c3:=c3||','||c2;
+else
+  c3:=c2;
+end if;
+
+end loop;
+dbms_output.put_line(c3);
+end;
+/
+
+OR
+
+SELECT LISTAGG(LETTER, ',') WITHIN GROUP(ORDER BY lvl) finally_changed
+  FROM (SELECT LEVEL lvl, SUBSTR('Hello', LEVEL, 1) LETTER
+          FROM DUAL
+        CONNECT BY LEVEL <= LENGTH('Hello'));
+
+
+
+---------------------------------------------------------------------
+Program 5:
+Print
+*
+**
+***
+****
+*****
+****
+***
+**
+*
+
+Answer:
+declare
+n number:=5;
+v varchar2(1):='*';
+i number;
+j number;
+
+begin
+for i in 1..n-1 loop  
+  for j in 1..i  loop
+    dbms_output.put(v);
+    end loop;
+     DBMS_OUTPUT.NEW_LINE; -- for new line
+end loop;
+  
+for i in 1..n loop  
+  for j in 1..n-i+1  loop
+    dbms_output.put(v);
+    end loop;
+     DBMS_OUTPUT.NEW_LINE; -- for new line
+end loop;
+
+end;
+-------------------------------------------------
+Program 6:
+Print
+*****
+ ****
+  ***
+   **
+    *
+	
+Answer:
+declare
+  n number := 5;
+  i number;
+  j number;
+  k number;
+begin
+  for i in reverse 1 .. n loop
+    for j in 1 .. n - i loop
+      dbms_output.put(' ');
+    end loop;
+  
+    for k in 1 .. i loop
+      dbms_output.put('*');
+    end loop;
+    dbms_output.new_line;
+  end loop;
+end;
+/
+------------------------------------------------------------------
+Program 7:
+Print
+
+    *
+   ***
+  *****
+ *******
+*********
+
+
+Answer:
+declare
+  n number := 10;
+  i number := 1;
+  j number;
+  k number;
+begin
+  while i < n loop
+    j := 1;
+    while j < n - i loop
+      dbms_output.put(' ');
+      j := j + 2;
+    end loop;
+  
+    for k in 1 .. i loop
+      dbms_output.put('*');
+    end loop;
+    dbms_output.new_line;
+    i := i + 2;
+  end loop;
+end;
+/
+------------------------------------------------------------------
+Program 8:
+print
+    *
+   ***
+  *****
+ *******
+*********
+ *******
+  *****
+   ***
+    *
+
+Answer:
+
+declare
+  n number := 10;
+  i number := 1;
+  j number;
+  k number;
+begin
+  while i < n loop
+    j := 1;
+    while j < n - i loop
+      dbms_output.put(' ');
+      j := j + 2;
+    end loop;
+  
+    for k in 1 .. i loop
+      dbms_output.put('*');
+    end loop;
+    dbms_output.new_line;
+    i := i + 2;
+  end loop;
+
+  i := 7;
+  while i >= 1 loop
+    j := 9;
+    while j > i loop
+      dbms_output.put(' ');
+      j := j - 2;
+    end loop;
+  
+    for k in 1 .. i loop
+      dbms_output.put('*');
+    end loop;
+    dbms_output.new_line;
+    i := i - 2;
+  end loop;
+end;
+/
